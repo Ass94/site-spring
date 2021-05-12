@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Cliente implements Serializable {
@@ -19,6 +20,9 @@ public class Cliente implements Serializable {
 	private String email;
 	private String telefone;
 	private String mensagem;
+
+	@OneToOne(mappedBy = "cliente")
+	private Endereco endereco;
 
 	public Cliente() {
 	}
@@ -71,6 +75,14 @@ public class Cliente implements Serializable {
 		this.mensagem = mensagem;
 	}
 
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -98,7 +110,30 @@ public class Cliente implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Olá, ");
+		builder.append("Você recebeu uma solicitação de assinatura no site, segue os dados para contato abaixo:\n");
+		builder.append("Nome: ");
+		builder.append(getNome());
+		builder.append("E-mail: ");
+		builder.append(getEmail());
+		builder.append("Endereço:\n");
+		builder.append("CEP: ");
+		builder.append(getEndereco().getCep());
+		builder.append("Logradouro: ");
+		builder.append(getEndereco().getLogradouro());
+		builder.append("Número: ");
+		builder.append(getEndereco().getNumero());
+		builder.append("Bairro: ");
+		builder.append(getEndereco().getBairro());
+		builder.append("Cidade: ");
+		builder.append(getEndereco().getCidade());
+		builder.append("Estado: ");
+		builder.append(getEndereco().getEstado());
+		builder.append("Mensagem: ");
+		builder.append(getMensagem());
+		return builder.toString();
+		
 	}
 
 }

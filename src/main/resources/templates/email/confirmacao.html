@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:remove="all">Order Confirmation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<div>
+		<h3>Olá, </h3>
+		<h3>Você recebeu uma solicitação de assinatura no site, segue os dados para contato abaixo: </h3>
+		
+		<p>
+			Nome: <span
+				th:text="${cliente.nome}"></span>
+		</p>
+		
+		<p>
+			E-mail: <span
+				th:text="${cliente.email}"></span>
+		</p>
+		
+		<p>
+			Telefone: <span
+				th:text="${cliente.telefone}"></span>
+		</p>
+		
+		<h3>Endereço: </h3>
+		
+		
+		<p>
+			CEP: <span
+				th:text="${cliente.endereco.cep}"></span>
+		</p>
+		
+		<p>
+			Logradouro: <span
+				th:text="${cliente.endereco.logradouro}"></span>
+		</p>
+		
+		<p>
+			Número: <span
+				th:text="${cliente.endereco.numero}"></span>
+		</p>
+		
+		<p>
+			Bairro: <span
+				th:text="${cliente.endereco.bairro}"></span>
+		</p>
+		
+		<p>
+			Cidade: <span
+				th:text="${cliente.endereco.cidade}"></span>
+		</p>
+		
+		<p>
+			Estado: <span
+				th:text="${cliente.endereco.estado}"></span>
+		</p>
+		
+		<p>
+			Mensagem: <span
+				th:text="${cliente.endereco.logradouro}"></span>
+		</p>
+		
+	</div>
+
+</body>
+</html>
